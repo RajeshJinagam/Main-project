@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Phishing URL Detector</title>
+</head>
+<body>
+  <h1>Check a URL</h1>
+
+  {% if error %}
+    <p style="color: red;">{{ error }}</p>
+  {% endif %}
+
+  <form method="POST">
+    {% csrf_token %}
+    <input type="text" name="url" placeholder="Enter URL" required>
+    <button type="submit">Check</button>
+  </form>
+
+  {% if result %}
+    <h2>Result: {{ result }}</h2>
+    <p>Confidence: {{ confidence }}</p>
+  {% endif %}
+</body>
+</html>
